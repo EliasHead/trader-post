@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 export default function teams() {
   return (
-    <div className="flex gap-4 justify-center items-center h-screen">
+    <div className="flex h-screen items-center justify-center gap-4">
       <h1>Times</h1>
       <Link href="/">Home</Link>
     </div>

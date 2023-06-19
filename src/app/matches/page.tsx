@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 export default function Matches() {
   return (
-    <div className="flex gap-4 justify-center items-center h-screen">
-    <h1>Matches</h1>
-    <Link href="/">Home</Link>
-  </div>
+    <div className="flex h-screen items-center justify-center gap-4">
+      <h1>Matches</h1>
+      <Link href="/">Home</Link>
+    </div>
   )
 }
