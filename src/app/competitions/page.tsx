@@ -1,10 +1,10 @@
-import Link from 'next/link'
+import CompentitionsList from '@/components/competition/CompentitionList'
 
 export default function Competitions() {
   return (
-    <div className="flex h-screen items-center justify-center gap-4">
-      <h1>Competitions</h1>
-      <Link href="/">Home</Link>
+    <div>
+      <h1>Campeonatos</h1>
+      <CompentitionsList />
     </div>
   )
 }
