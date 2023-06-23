@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Competition {
+  competition_id   Int       @id @default(autoincrement())
+  competition_name String    
+  season_name      String    
+  createdAt        DateTime  @default(now())
+  Matches          Matches[]
+
+  @@map("competitions")
+}
+
+model Teams {
+  team_id       Int       @id @default(autoincrement())
+  team_name     String    
+  team_country  String    
+  team_initials String?   
+  createdAt     DateTime  @default(now()) 
+  homeTeam      Matches[] @relation("homeTeam")
+  visitorTeam   Matches[] @relation("visitorTeam")
+
+  @@map("teams")
+}
+
+model Matches {
+  match_id        Int          @id @default(autoincrement())
+  match_date      DateTime     @default(now())
+  home_goals      Int          @default(0)
+  visitor_goals   Int          @default(0)
+  odd             Float?
+  strategy        String?      
+  result          String?      
+  review          String?      
+  stake           Float?
+  round           Int          @default(0)
+  leverage        Leverage?    @relation(fields: [leverageId], references: [leverageId])
+  leverageId      Int?
+  competition     Competition? @relation(fields: [competition_id], references: [competition_id])
+  competition_id  Int?
+  home_team_id    Int
+  home_team       Teams        @relation("homeTeam", fields: [home_team_id], references: [team_id])
+  visitor_team_id Int
+  visitor_team    Teams        @relation("visitorTeam", fields: [visitor_team_id], references: [team_id])
+  // @@id([round, home_team_id, visitor_team_id])
+
+  @@unique(fields: [round, home_team_id, visitor_team_id], name: "matchUnique")
+  @@map("matches")
+}
+
+model Leverage {
+  leverageId  Int       @id @default(autoincrement())
+  description String?
+  result      String?
+  createdAt   DateTime  @default(now())
+  Matches     Matches[]
+}
+
+
+model result {
+  resultId  Int       @id @default(autoincrement())
+  monthly String
+  result String?
+}
