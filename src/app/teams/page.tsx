@@ -1,10 +1,12 @@
-import Link from 'next/link'
+import TeamsList from '@/components/teams/teamsList'
 
 export default function teams() {
   return (
-    <div className="flex h-screen items-center justify-center gap-4">
-      <h1>Times</h1>
-      <Link href="/">Home</Link>
+    <div>
+      <h1>
+        <strong>Times</strong>
+      </h1>
+      <TeamsList />
     </div>
   )
 }

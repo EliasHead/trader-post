@@ -5,7 +5,6 @@ const prisma = new PrismaClient()
 
 export default async function CompentitionsList() {
   const competitions = await prisma.competition.findMany()
-  console.log(competitions)
 
   return (
     <>
