@@ -3,6 +3,7 @@ import { formatDate } from '@/utils/dateUtils'
 const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
+
 export default async function MatchesList() {
   const matches = await prisma.matches.findMany({
     include: {

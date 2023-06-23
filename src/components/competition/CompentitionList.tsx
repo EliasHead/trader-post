@@ -8,7 +8,7 @@ export default async function CompentitionsList() {
 
   return (
     <>
-      <ul>
+      <ul className="w-2/3">
         <SearchCompetition competitions={competitions} />
       </ul>
     </>

@@ -23,9 +23,31 @@ export default function SearchCompetition({ competitions }: any) {
       <div>
         {competitionsFilter.map((competition: any) => {
           return (
-            <li key={competition.competition_id}>
-              {competition.competition_id} - {competition.competition_name}
-            </li>
+            <div
+              key={competition.competition_id}
+              className="relative overflow-x-auto rounded-md"
+            >
+              <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+                <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" className="px-6 py-3">
+                      Id
+                    </th>
+                    <th scope="col" className="px-6 py-3">
+                      Competição
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b bg-white dark:border-gray-700 dark:bg-gray-800">
+                    <td className="px-6 py-4">{competition.competition_id}</td>
+                    <td className="px-6 py-4">
+                      {competition.competition_name}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           )
         })}
       </div>

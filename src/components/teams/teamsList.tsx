@@ -8,7 +8,7 @@ export default async function TeamsList() {
   const teams = await prisma.teams.findMany()
   return (
     <>
-      <ul>
+      <ul className="w-2/3">
         <SearchTeams teams={teams} />
       </ul>
     </>

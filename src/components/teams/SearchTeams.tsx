@@ -21,13 +21,33 @@ export default function SearchTeams({ teams }: any) {
         placeholder="What are you looking for?"
       />
       <div>
-        {teamsFilter.map((team: any) => {
-          return (
-            <li key={team.team_id}>
-              {team.team_id} - {team.team_name}
-            </li>
-          )
-        })}
+        <div className="relative overflow-x-auto rounded-md">
+          <table className="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+            <thead className="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+              <tr>
+                <th scope="col" className="px-6 py-3">
+                  Id
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {teamsFilter.map((team: any) => {
+                return (
+                  <tr
+                    key={team.team_id}
+                    className="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
+                  >
+                    <td className="px-6 py-4">{team.team_id}</td>
+                    <td className="px-6 py-4">{team.team_name}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   )
