@@ -22,7 +22,11 @@ export default function SearchCompetition({ competitions }: any) {
       />
       <div>
         {competitionsFilter.map((competition: any) => {
-          return <li key={competition.id}>{competition.competition_name}</li>
+          return (
+            <li key={competition.competition_id}>
+              {competition.competition_id} - {competition.competition_name}
+            </li>
+          )
         })}
       </div>
     </>

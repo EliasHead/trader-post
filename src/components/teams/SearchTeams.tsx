@@ -22,7 +22,11 @@ export default function SearchTeams({ teams }: any) {
       />
       <div>
         {teamsFilter.map((team: any) => {
-          return <li key={team.team_id}>{team.team_name}</li>
+          return (
+            <li key={team.team_id}>
+              {team.team_id} - {team.team_name}
+            </li>
+          )
         })}
       </div>
     </>
