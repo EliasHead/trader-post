@@ -4,7 +4,6 @@ export default function Home() {
   return (
     <>
       <div className="container flex h-screen items-center justify-center gap-4">
-        <h1>Home</h1>
         <Link href="/matches">Jogos</Link>
         <Link href="/teams">Times</Link>
         <Link href="/competitions">Campeonatos</Link>

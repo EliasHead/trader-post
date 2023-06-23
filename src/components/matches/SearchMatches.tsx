@@ -1,16 +1,16 @@
 'use client'
 import { useMemo, useState } from 'react'
 
-export default function SearchTeams({ teams }: any) {
+export default function SearchMatches({ matches }: any) {
   const [searchQuery, setSearchQuery] = useState('')
 
-  const teamsFilter = useMemo(() => {
+  const matchesFilter = useMemo(() => {
     const lowerSearch = searchQuery.toLowerCase()
 
-    return teams.filter((team: any) =>
-      team.team_name.toLowerCase().includes(lowerSearch),
+    return matches.filter((matche: any) =>
+      matche.team_name.toLowerCase().includes(lowerSearch),
     )
-  }, [teams, searchQuery])
+  }, [matches, searchQuery])
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function SearchTeams({ teams }: any) {
         placeholder="What are you looking for?"
       />
       <div>
-        {teamsFilter.map((team: any) => {
+        {matchesFilter.map((team: any) => {
           return <li key={team.team_id}>{team.team_name}</li>
         })}
       </div>

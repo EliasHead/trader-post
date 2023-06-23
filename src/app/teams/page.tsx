@@ -1,6 +1,6 @@
 import TeamsList from '@/components/teams/teamsList'
 
-export default function teams() {
+export default function Teams() {
   return (
     <div>
       <h1>
