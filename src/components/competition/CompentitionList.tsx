@@ -1,17 +1,16 @@
-import SearchInput from '../SearchInput'
+import SearchCompetition from './SearchCompetition'
+const { PrismaClient } = require('@prisma/client')
 
-async function getUser() {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
-  return res.json()
-}
+const prisma = new PrismaClient()
 
 export default async function CompentitionsList() {
-  const data = await getUser()
+  const competitions = await prisma.competition.findMany()
+  console.log(competitions)
 
   return (
     <>
       <ul>
-        <SearchInput data={data} />
+        <SearchCompetition competitions={competitions} />
       </ul>
     </>
   )
