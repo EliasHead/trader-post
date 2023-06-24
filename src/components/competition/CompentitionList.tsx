@@ -1,11 +1,6 @@
 import SearchCompetition from './SearchCompetition'
-const { PrismaClient } = require('@prisma/client')
 
-const prisma = new PrismaClient()
-
-export default async function CompentitionsList() {
-  const competitions = await prisma.competition.findMany()
-
+export default async function CompentitionsList({ competitions }: any) {
   return (
     <>
       <ul className="w-2/3">
