@@ -1,4 +1,5 @@
 import CompentitionsList from '@/components/competition/CompentitionList'
+import AddCompetitions from '@/components/competition/addCompetitions'
 import { prisma } from '@/utils/prisma'
 
 export default async function Competitions() {
@@ -8,6 +9,7 @@ export default async function Competitions() {
       <h1>
         <strong>Campeonatos</strong>
       </h1>
+      <AddCompetitions />
       <CompentitionsList competitions={competitions} />
     </div>
   )
