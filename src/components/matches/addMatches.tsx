@@ -1,6 +1,28 @@
+'use client'
+
+import { createMatches } from '@/utils/createMatches'
+import { ChangeEvent, FormEvent, useState } from 'react'
 export function AddMatches() {
+  const [formData, setFormData] = useState({
+    home_team: '',
+    visitor_team: '',
+    competition: '',
+    round: '',
+  })
+
+  function handleChange(
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) {
+    const { name, value } = event.target
+    setFormData((prevState) => ({ ...prevState, [name]: value }))
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    createMatches(formData)
+  }
+
   return (
-    <form /* onSubmit={handleSubmit} */ className="w-full max-w-6xl">
+    <form onSubmit={handleSubmit} className="w-full max-w-6xl">
       <div className="mx-3 mb-6 flex items-center border-b border-teal-500 py-2">
         <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
           <label
@@ -13,11 +35,11 @@ export function AddMatches() {
             type="text"
             name="home_team"
             id="home_team"
-            // value={formData.name}
+            value={formData.home_team}
             className="mb-3 block w-full appearance-none rounded bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none"
             placeholder="Time da casa"
             aria-label="Time da casa"
-            // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
@@ -31,11 +53,11 @@ export function AddMatches() {
             type="text"
             name="visitor_team"
             id="visitor_team"
-            // value={formData.country}
+            value={formData.visitor_team}
             className="mb-3 block w-full appearance-none rounded bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none"
             placeholder="Time visitante"
             aria-label="Time visitante"
-            // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
@@ -49,11 +71,11 @@ export function AddMatches() {
             type="text"
             name="competition"
             id="competition"
-            // value={formData.name}
+            value={formData.competition}
             className="mb-3 block w-full appearance-none rounded bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none"
             placeholder="Competição"
             aria-label="Competição"
-            // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
         <div className="mb-6 w-full px-3 md:mb-0 md:w-1/2">
@@ -67,11 +89,11 @@ export function AddMatches() {
             type="text"
             name="round"
             id="round"
-            // value={formData.country}
+            value={formData.round}
             className="mb-3 block w-full appearance-none rounded bg-gray-200 px-4 py-3 leading-tight text-gray-700 focus:bg-white focus:outline-none"
             placeholder="Rodada"
             aria-label="Rodada"
-            // onChange={handleChange}
+            onChange={handleChange}
           />
         </div>
 
