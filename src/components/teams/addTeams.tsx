@@ -1,5 +1,5 @@
 'use client'
-import { serverCreateUser } from '@/lib/createTeam'
+import { createTeam } from '@/utils/createTeam'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
 export default function AddTeams() {
@@ -16,9 +16,7 @@ export default function AddTeams() {
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    // event.preventDefault()
-
-    serverCreateUser(formData)
+    createTeam(formData)
   }
 
   return (
