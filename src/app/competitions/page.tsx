@@ -1,4 +1,4 @@
-import CompentitionsList from '@/components/competition/CompentitionList'
+import CompentitionsList from '@/components/competition/CompetitionList'
 import AddCompetitions from '@/components/competition/addCompetitions'
 import { prisma } from '@/utils/prisma'
 
