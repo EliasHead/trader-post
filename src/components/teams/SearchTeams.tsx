@@ -1,4 +1,5 @@
 'use client'
+import { Pencil, Trash } from '@phosphor-icons/react'
 import { useMemo, useState } from 'react'
 
 export default function SearchTeams({ teams }: any) {
@@ -31,6 +32,9 @@ export default function SearchTeams({ teams }: any) {
                 <th scope="col" className="px-6 py-3">
                   Time
                 </th>
+                <th scope="col" className="px-6 py-3">
+                  Ações
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -42,6 +46,14 @@ export default function SearchTeams({ teams }: any) {
                   >
                     <td className="px-6 py-4">{team.team_id}</td>
                     <td className="px-6 py-4">{team.team_name}</td>
+                    <td className="flex gap-2 px-6 py-4">
+                      <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
+                        <Pencil size={24} color="#ffffff" weight="regular" />
+                      </button>
+                      <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
+                        <Trash size={24} color="#ffffff" weight="regular" />
+                      </button>
+                    </td>
                   </tr>
                 )
               })}
