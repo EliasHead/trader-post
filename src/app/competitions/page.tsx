@@ -7,7 +7,7 @@ export default async function Competitions() {
   return (
     <div className="mt-12 flex h-screen flex-col items-center justify-start gap-4">
       <h1>
-        <strong>Campeonatos</strong>
+        <strong>Campeonatoss</strong>
       </h1>
       <AddCompetitions />
       <CompentitionsList competitions={competitions} />
