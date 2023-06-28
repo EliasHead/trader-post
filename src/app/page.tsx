@@ -1,5 +1,7 @@
 import { prisma } from '@/utils/prisma'
 
+export const revalidate = 86420
+
 export default async function Home() {
   const matchesCount = await prisma.matches.count()
 
