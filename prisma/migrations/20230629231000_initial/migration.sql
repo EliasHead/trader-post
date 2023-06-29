@@ -3,7 +3,7 @@ CREATE TABLE "competitions" (
     "competition_id" SERIAL NOT NULL,
     "competition_name" TEXT NOT NULL,
     "season_name" TEXT NOT NULL,
-    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "createdAt" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "competitions_pkey" PRIMARY KEY ("competition_id")
 );
@@ -62,13 +62,13 @@ CREATE TABLE "result" (
 CREATE UNIQUE INDEX "matches_round_home_team_id_visitor_team_id_key" ON "matches"("round", "home_team_id", "visitor_team_id");
 
 -- AddForeignKey
-ALTER TABLE "matches" ADD CONSTRAINT "matches_leverageId_fkey" FOREIGN KEY ("leverageId") REFERENCES "Leverage"("leverageId") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "matches" ADD CONSTRAINT "matches_competition_id_fkey" FOREIGN KEY ("competition_id") REFERENCES "competitions"("competition_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "matches" ADD CONSTRAINT "matches_home_team_id_fkey" FOREIGN KEY ("home_team_id") REFERENCES "teams"("team_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "matches" ADD CONSTRAINT "matches_leverageId_fkey" FOREIGN KEY ("leverageId") REFERENCES "Leverage"("leverageId") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "matches" ADD CONSTRAINT "matches_visitor_team_id_fkey" FOREIGN KEY ("visitor_team_id") REFERENCES "teams"("team_id") ON DELETE RESTRICT ON UPDATE CASCADE;

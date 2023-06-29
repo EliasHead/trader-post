@@ -1,5 +1,6 @@
 'use client'
 import { Pencil, Trash } from '@phosphor-icons/react'
+import Link from 'next/link'
 import { useMemo, useState } from 'react'
 
 export default function SearchCompetition({ competitions }: any) {
@@ -49,9 +50,13 @@ export default function SearchCompetition({ competitions }: any) {
                       {competition.competition_name}
                     </td>
                     <td className="flex gap-2 px-6 py-4">
-                      <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
-                        <Pencil size={24} color="#ffffff" weight="regular" />
-                      </button>
+                      <Link
+                        href={`competitions/edit/${competition.competition_id}`}
+                      >
+                        <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
+                          <Pencil size={24} color="#ffffff" weight="regular" />
+                        </button>
+                      </Link>
                       <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
                         <Trash size={24} color="#ffffff" weight="regular" />
                       </button>

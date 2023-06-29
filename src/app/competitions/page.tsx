@@ -1,16 +1,31 @@
-import CompentitionsList from '@/components/competition/CompetitionList'
-import AddCompetitions from '@/components/competition/addCompetitions'
+// import CompentitionsList from '@/components/competition/CompetitionList'
+import SearchCompetition from './SearchCompetition'
+import AddCompetitions from './addCompetitions'
 import { prisma } from '@/utils/prisma'
 
-export default async function Competitions() {
-  const competitions = await prisma.competition.findMany()
+const getCompetitions = async () => {
+  const res = await prisma.competition.findMany({
+    select: {
+      competition_id: true,
+      competition_name: true,
+      season_name: true,
+    },
+  })
+  return res
+}
+
+const Competitions = async () => {
+  const competitions = await getCompetitions()
+
   return (
     <div className="mt-12 flex h-screen flex-col items-center justify-start gap-4">
       <h1>
-        <strong>Campeonatoss</strong>
+        <strong>Campeonatos</strong>
       </h1>
-      <AddCompetitions />
-      <CompentitionsList competitions={competitions} />
+      <AddCompetitions competitions={competitions} />
+      <SearchCompetition competitions={competitions} />
     </div>
   )
 }
+
+export default Competitions
