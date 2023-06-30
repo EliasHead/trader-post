@@ -1,13 +1,10 @@
 'use client'
 import { ChangeEvent, FormEvent, useState } from 'react'
-// TODO:
-// import type { Competition } from '@prisma/client'
+import type { Competition } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const AddCompetitions = (
-  { competitions }: any /* { competitions: Competition[] } */,
-) => {
+const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
   const [formData, setFormData] = useState({
     name: '',
     season: '',
@@ -49,7 +46,7 @@ const AddCompetitions = (
       <button className="btn bg-blue-500 text-white" onClick={handleModal}>
         Add New
       </button>
-      <div className={isOpen ? 'modal modal-open' : 'modal'}>
+      <div className={isOpen ? 'modal-open modal' : 'modal'}>
         <div className="modal-box">
           <h3 className="text-lg font-bold">Adicionar novo time</h3>
           <form onSubmit={handleSubmit}>

@@ -2,14 +2,19 @@
 import { Pencil, Trash } from '@phosphor-icons/react'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
+import { Competition } from '@prisma/client'
 
-export default function SearchCompetition({ competitions }: any) {
+export default function SearchCompetition({
+  competitions,
+}: {
+  competitions: Competition[]
+}) {
   const [searchQuery, setSearchQuery] = useState('')
 
   const competitionsFilter = useMemo(() => {
     const lowerSearch = searchQuery.toLowerCase()
 
-    return competitions.filter((competition: any) =>
+    return competitions.filter((competition) =>
       competition.competition_name.toLowerCase().includes(lowerSearch),
     )
   }, [competitions, searchQuery])
@@ -39,7 +44,7 @@ export default function SearchCompetition({ competitions }: any) {
               </tr>
             </thead>
             <tbody>
-              {competitionsFilter.map((competition: any) => {
+              {competitionsFilter.map((competition) => {
                 return (
                   <tr
                     key={competition.competition_id}
@@ -51,6 +56,7 @@ export default function SearchCompetition({ competitions }: any) {
                     </td>
                     <td className="flex gap-2 px-6 py-4">
                       <Link
+                        passHref
                         href={`competitions/edit/${competition.competition_id}`}
                       >
                         <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
