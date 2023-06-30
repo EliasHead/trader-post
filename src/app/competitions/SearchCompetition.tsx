@@ -1,8 +1,8 @@
 'use client'
-import { Pencil, Trash } from '@phosphor-icons/react'
-import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import { Competition } from '@prisma/client'
+import UpdateCompetition from './updateCompetition'
+import DeleteCompetition from './deleteCompetition'
 
 export default function SearchCompetition({
   competitions,
@@ -54,18 +54,9 @@ export default function SearchCompetition({
                     <td className="px-6 py-4">
                       {competition.competition_name}
                     </td>
-                    <td className="flex gap-2 px-6 py-4">
-                      <Link
-                        passHref
-                        href={`competitions/edit/${competition.competition_id}`}
-                      >
-                        <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
-                          <Pencil size={24} color="#ffffff" weight="regular" />
-                        </button>
-                      </Link>
-                      <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
-                        <Trash size={24} color="#ffffff" weight="regular" />
-                      </button>
+                    <td className="flex justify-center space-x-1 px-6 py-4">
+                      <UpdateCompetition competition={competition} />
+                      <DeleteCompetition competition={competition} />
                     </td>
                   </tr>
                 )

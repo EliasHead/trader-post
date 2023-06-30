@@ -19,3 +19,15 @@ export const PATCH = async (
   })
   return NextResponse.json(competition, { status: 200 })
 }
+
+export const DELETE = async (
+  request: Request,
+  { params }: { params: { id: string } },
+) => {
+  const competition = await prisma.competition.delete({
+    where: {
+      competition_id: Number(params.id),
+    },
+  })
+  return NextResponse.json(competition, { status: 200 })
+}
