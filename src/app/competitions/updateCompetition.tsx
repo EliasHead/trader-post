@@ -1,13 +1,20 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 'use client'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import type { Competition } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
+type Competition = {
+  competition_id: number
+  competition_name: string
+  season_name: string
+  createdAt: Date | null
+}
+
+const UpdateCompetition = ({ competition }: { competition: Competition }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    season: '',
+    name: competition.competition_name,
+    season: competition.season_name,
   })
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -21,18 +28,14 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
     setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleUpdate(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsLoading(true)
-    await axios.post('/api/competitions', {
+    await axios.patch(`/api/competitions/${competition.competition_id}`, {
       competition_name: formData.name,
       season_name: formData.season,
     })
     setIsLoading(false)
-    setFormData({
-      name: '',
-      season: '',
-    })
     router.refresh()
     setIsOpen(false)
   }
@@ -43,13 +46,15 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
 
   return (
     <div>
-      <button className="btn bg-blue-500 text-white" onClick={handleModal}>
-        Add New
+      <button className="btn-info btn-sm btn" onClick={handleModal}>
+        Editar
       </button>
-      <div className={isOpen ? 'modal-open modal' : 'modal'}>
+      <div className={isOpen ? `modal-open modal` : 'modal'}>
         <div className="modal-box">
-          <h3 className="text-lg font-bold">Adicionar novo time</h3>
-          <form onSubmit={handleSubmit}>
+          <h3 className="text-lg font-bold">
+            Atualizar{competition.competition_name}
+          </h3>
+          <form onSubmit={handleUpdate}>
             <div className="form-control w-full">
               <label className="label font-bold" htmlFor="nome-do-campeonato">
                 Nome do Campeonato
@@ -101,4 +106,4 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
   )
 }
 
-export default AddCompetitions
+export default UpdateCompetition

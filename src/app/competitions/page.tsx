@@ -1,4 +1,3 @@
-// import CompentitionsList from '@/components/competition/CompetitionList'
 import SearchCompetition from './SearchCompetition'
 import AddCompetitions from './addCompetitions'
 import { prisma } from '@/utils/prisma'
@@ -9,6 +8,7 @@ const getCompetitions = async () => {
       competition_id: true,
       competition_name: true,
       season_name: true,
+      createdAt: true,
     },
   })
   return res
