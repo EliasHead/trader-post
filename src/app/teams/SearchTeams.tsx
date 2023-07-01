@@ -38,7 +38,7 @@ export default function SearchTeams({ teams }: { teams: Teams[] }) {
               </tr>
             </thead>
             <tbody>
-              {teamsFilter.map((team: any) => {
+              {teamsFilter.map((team) => {
                 return (
                   <tr
                     key={team.team_id}
