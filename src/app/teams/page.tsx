@@ -24,8 +24,8 @@ export default async function Teams() {
       <h1>
         <strong>Times</strong>
       </h1>
-      <SearchTeams teams={teams}/>
       <AddTeams teams={teams} />
+      <SearchTeams teams={teams}/>
     </div>
   )
 }
