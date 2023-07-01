@@ -1,6 +1,7 @@
 'use client'
 import { useMemo, useState } from 'react'
 import { Teams } from '@prisma/client'
+import UpdateTeams from './updateTeams'
 
 export default function SearchTeams({ teams }: { teams: Teams[] }) {
   const [searchQuery, setSearchQuery] = useState('')
@@ -46,9 +47,8 @@ export default function SearchTeams({ teams }: { teams: Teams[] }) {
                   >
                     <td className="px-6 py-4">{team.team_id}</td>
                     <td className="px-6 py-4">{team.team_name}</td>
-                    <td className="flex gap-2 px-6 py-4">
-                      <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
-                      </button>
+                    <td className="flex justify-center space-x-1 px-6 py-4">
+                      <UpdateTeams team={team}/>
                       <button className="rounded bg-blue-500 px-2 py-2 font-bold text-white hover:bg-blue-700">
                       </button>
                     </td>

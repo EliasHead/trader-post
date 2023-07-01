@@ -3,8 +3,21 @@ import AddTeams from './addTeams'
 
 import { prisma } from '@/utils/prisma'
 
+const getTeams = async () => {
+  const res = await prisma.teams.findMany({
+    select: {
+      team_id: true,
+      team_name: true,
+      team_country: true,
+      team_initials: true,
+      createdAt: true,
+    },
+  })
+  return res
+}
+
 export default async function Teams() {
-  const teams = await prisma.teams.findMany()
+  const teams = await getTeams()
 
   return (
     <div className="mt-12 flex h-screen flex-col items-center justify-start gap-4">
