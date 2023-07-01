@@ -1,5 +1,6 @@
-import AddTeams from '@/components/teams/addTeams'
-import TeamsList from '@/components/teams/teamsList'
+import SearchTeams from './SearchTeams'
+import AddTeams from './addTeams'
+
 import { prisma } from '@/utils/prisma'
 
 export default async function Teams() {
@@ -10,8 +11,8 @@ export default async function Teams() {
       <h1>
         <strong>Times</strong>
       </h1>
-      <AddTeams />
-      <TeamsList teams={teams} />
+      <SearchTeams teams={teams}/>
+      <AddTeams teams={teams} />
     </div>
   )
 }

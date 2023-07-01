@@ -1,13 +1,13 @@
 'use client'
 import { ChangeEvent, FormEvent, useState } from 'react'
-import type { Competition } from '@prisma/client'
+import type { Teams } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
+const AddTeams = ({ teams }: {teams: Teams[]}) => {
   const [formData, setFormData] = useState({
     name: '',
-    season: '',
+    country: '',
   })
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -24,14 +24,14 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsLoading(true)
-    await axios.post('/api/competitions', {
-      competition_name: formData.name,
-      season_name: formData.season,
+    await axios.post('/api/teams', {
+      team_name: formData.name,
+      team_country: formData.country,
     })
     setIsLoading(false)
     setFormData({
       name: '',
-      season: '',
+      country: '',
     })
     router.refresh()
     setIsOpen(false)
@@ -44,39 +44,39 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
   return (
     <div>
       <button className="btn bg-blue-500 text-white" onClick={handleModal}>
-        Adicionar novo campeonato
+        Adicionar time
       </button>
       <div className={isOpen ? 'modal-open modal' : 'modal'}>
         <div className="modal-box">
-          <h3 className="text-lg font-bold">Adicionar novo Campeonato</h3>
+          <h3 className="text-lg font-bold">Adicionar novo time</h3>
           <form onSubmit={handleSubmit}>
             <div className="form-control w-full">
-              <label className="label font-bold" htmlFor="nome-do-campeonato">
-                Nome do Campeonato
+              <label className="label font-bold" htmlFor="nome-do-time">
+                Nome do time
               </label>
               <input
                 type="text"
                 name="name"
-                id="nome-do-campeonato"
+                id="nome-do-time"
                 value={formData.name}
                 className="input-bordered input"
-                placeholder="Nome do Campeonato"
-                aria-label="Nome do Campeonato"
+                placeholder="Nome do Time"
+                aria-label="Nome do Time"
                 onChange={handleChange}
               />
             </div>
             <div className="form-control w-full">
-              <label className="label font-bold" htmlFor="season">
-                Temporada
+              <label className="label font-bold" htmlFor="country">
+                País do time
               </label>
               <input
                 type="text"
-                name="season"
-                id="season"
-                value={formData.season}
+                name="country"
+                id="country"
+                value={formData.country}
                 className="input-bordered input"
-                placeholder="Temporada ex: 2023"
-                aria-label="Temporada"
+                placeholder="ex: BRAZIL"
+                aria-label="País"
                 onChange={handleChange}
               />
             </div>
@@ -101,4 +101,4 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
   )
 }
 
-export default AddCompetitions
+export default AddTeams
