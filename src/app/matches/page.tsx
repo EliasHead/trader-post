@@ -1,5 +1,5 @@
 import MatchesList from '@/components/matches/MatchesList'
-import { AddMatches } from '@/components/matches/addMatches'
+import AddMatches from './addMatches'
 import { prisma } from '@/utils/prisma'
 import { dataRounds } from '@/utils/rounds'
 
