@@ -43,7 +43,7 @@ const AddMatches = ({ teams, competitions, rounds }: MatchesProps) => {
     setIsLoading(true)
 
     await axios.post('/api/matches', {
-      home_team: parseInt(formData.home_team),
+      home_team_id: parseInt(formData.home_team),
       visitor_team_id: parseInt(formData.visitor_team),
       competition_id: parseInt(formData.competition),
       round: parseInt(formData.round),
