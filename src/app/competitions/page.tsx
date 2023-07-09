@@ -18,7 +18,7 @@ const Competitions = async () => {
   const competitions = await getCompetitions()
 
   return (
-    <div className="mt-12 flex h-screen flex-col items-center justify-start gap-4">
+    <div className="mt-16 flex h-screen flex-col items-center justify-start gap-4">
       <h1>
         <strong>Campeonatos</strong>
       </h1>

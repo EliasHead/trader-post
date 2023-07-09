@@ -52,8 +52,10 @@ export default async function Matches() {
   const matches = await getMatches()
 
   return (
-    <div className="mt-12 flex h-screen w-full flex-col items-center justify-start gap-4">
-      <h1>Jogos</h1>
+    <div className="mt-16 flex h-screen w-full flex-col items-center justify-start gap-4">
+      <h1>
+        <strong>Jogos</strong>
+      </h1>
       <AddMatches teams={teams} competitions={competitions} rounds={rounds} />
       <MatchesList matches={matches} />
     </div>
