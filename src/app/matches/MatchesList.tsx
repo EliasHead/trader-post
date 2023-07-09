@@ -1,8 +1,36 @@
 import { formatDate } from '@/utils/dateUtils'
 import DeleteMatch from './deleteMatches'
 
-// TODO: Type matches
-export default async function MatchesList({ matches }: any) {
+type Match = {
+  match_id: number
+  match_date: Date
+  home_goals: number
+  visitor_goals: number
+  odd: number | null
+  strategy: string | null
+  result: string | null
+  review: string | null
+  stake: number | null
+  round: number
+  leverage: {
+    description: string | null
+  } | null
+  leverageId?: number
+  competition: {
+    competition_name: string
+  } | null
+  competititon_id?: number
+  home_team: {
+    team_name: string
+  }
+  home_team_id: number
+  visitor_team: {
+    team_name: string
+  }
+  visitor_team_id: number
+}
+
+export default async function MatchesList({ matches }: { matches: Match[] }) {
   return (
     <>
       <div className="flex flex-col">
@@ -51,7 +79,7 @@ export default async function MatchesList({ matches }: any) {
                   </tr>
                 </thead>
                 <tbody>
-                  {matches?.map((match: any) => {
+                  {matches?.map((match) => {
                     return (
                       <tr className="border-b" key={match.match_id}>
                         <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">

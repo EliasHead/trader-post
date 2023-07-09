@@ -19,7 +19,7 @@ const getMatches = async () => {
       round: true,
       leverage: {
         select: {
-          leverageId: true,
+          description: true,
         },
       },
       competition: {
@@ -27,16 +27,19 @@ const getMatches = async () => {
           competition_name: true,
         },
       },
+      competition_id: true,
       home_team: {
         select: {
           team_name: true,
         },
       },
+      home_team_id: true,
       visitor_team: {
         select: {
           team_name: true,
         },
       },
+      visitor_team_id: true,
     },
   })
   return res
