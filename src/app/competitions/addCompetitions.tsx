@@ -46,7 +46,7 @@ const AddCompetitions = ({ competitions }: { competitions: Competition[] }) => {
       <button className="btn bg-blue-500 text-white" onClick={handleModal}>
         Adicionar novo campeonato
       </button>
-      <div className={isOpen ? 'modal-open modal' : 'modal'}>
+      <div className={isOpen ? 'open-modal modal' : 'modal'}>
         <div className="modal-box">
           <h3 className="text-lg font-bold">Adicionar novo Campeonato</h3>
           <form onSubmit={handleSubmit}>
