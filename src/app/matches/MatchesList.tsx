@@ -1,5 +1,7 @@
 import { formatDate } from '@/utils/dateUtils'
 import DeleteMatch from './deleteMatches'
+import { Competition, Teams } from '@prisma/client'
+import UpdateMatch from './updateMtaches'
 
 type Match = {
   match_id: number
@@ -30,7 +32,24 @@ type Match = {
   visitor_team_id: number
 }
 
-export default async function MatchesList({ matches }: { matches: Match[] }) {
+type roundsType = {
+  round_id: number
+  round_name: number | string
+}
+
+type MatchesProps = {
+  competitions: Competition[]
+  teams: Teams[]
+  rounds: roundsType[]
+  matches: Match[]
+}
+
+export default async function MatchesList({
+  matches,
+  teams,
+  competitions,
+  rounds,
+}: MatchesProps) {
   return (
     <div className="w-[90%]">
       <div className="hidden overflow-auto rounded-lg shadow md:inline-block">
@@ -107,7 +126,12 @@ export default async function MatchesList({ matches }: { matches: Match[] }) {
                     {match.result}
                   </td>
                   <td className="flex justify-center space-x-1 px-6 py-4">
-                    {/* <UpdateCompetition competition={competition} /> */}
+                    <UpdateMatch
+                      match={match}
+                      competitions={competitions}
+                      teams={teams}
+                      rounds={rounds}
+                    />
                     <DeleteMatch match={match} />
                   </td>
                 </tr>
