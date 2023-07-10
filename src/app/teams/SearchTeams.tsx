@@ -49,7 +49,7 @@ export default function SearchTeams({ teams }: { teams: Teams[] }) {
                     <td className="px-6 py-4">{team.team_id}</td>
                     <td className="px-6 py-4">{team.team_name}</td>
                     <td className="flex justify-center space-x-1 px-6 py-4">
-                      <UpdateTeams team={team}/>
+                      <UpdateTeams team={team} />
                       <DeleteTeam team={team} />
                     </td>
                   </tr>

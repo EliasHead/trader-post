@@ -4,7 +4,7 @@ import type { Teams } from '@prisma/client'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
-const AddTeams = ({ teams }: {teams: Teams[]}) => {
+const AddTeams = ({ teams }: { teams: Teams[] }) => {
   const [formData, setFormData] = useState({
     name: '',
     country: '',

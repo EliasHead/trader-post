@@ -3,11 +3,11 @@ import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
 type Team = {
-  team_id:       number
-  team_name:     string
-  team_country:  string
+  team_id: number
+  team_name: string
+  team_country: string
   team_initials: string | null
-  createdAt:     Date
+  createdAt: Date
 }
 
 const DeleteTeam = ({ team }: { team: Team }) => {

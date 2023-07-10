@@ -4,14 +4,14 @@ import { useRouter } from 'next/navigation'
 import axios from 'axios'
 
 type Team = {
-  team_id:       number
-  team_name:     string
-  team_country:  string
+  team_id: number
+  team_name: string
+  team_country: string
   team_initials: string | null
-  createdAt:     Date
+  createdAt: Date
 }
 
-const UpdateTeams = ({ team }: {team: Team }) => {
+const UpdateTeams = ({ team }: { team: Team }) => {
   const [formData, setFormData] = useState({
     name: team.team_name,
     country: team.team_country,
@@ -51,9 +51,7 @@ const UpdateTeams = ({ team }: {team: Team }) => {
       </button>
       <div className={isOpen ? `modal-open modal` : 'modal'}>
         <div className="modal-box">
-          <h3 className="text-lg font-bold">
-            Atualizar{team.team_name}
-          </h3>
+          <h3 className="text-lg font-bold">Atualizar{team.team_name}</h3>
           <form onSubmit={handleUpdate}>
             <div className="form-control w-full">
               <label className="label font-bold" htmlFor="team_name">
