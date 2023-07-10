@@ -57,7 +57,12 @@ export default async function Matches() {
         <strong>Jogos</strong>
       </h1>
       <AddMatches teams={teams} competitions={competitions} rounds={rounds} />
-      <MatchesList matches={matches} />
+      <MatchesList
+        competitions={competitions}
+        matches={matches}
+        rounds={rounds}
+        teams={teams}
+      />
     </div>
   )
 }
